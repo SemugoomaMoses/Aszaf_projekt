@@ -56,7 +56,7 @@ namespace Aszaf_projekt
                         writer.WriteLine("Gyerekek száma: " + gyerekekSzam);
                     }
 
-
+//uauaua
 
                 }
                 MessageBox.Show("A foglalás elkészült!");
