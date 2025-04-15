@@ -137,6 +137,7 @@ namespace Aszaf_projekt
         {
             Regisztracio RegisztracioForm = new Regisztracio();
             RegisztracioForm.Show();
+            this.Hide();
             
         }
     }
