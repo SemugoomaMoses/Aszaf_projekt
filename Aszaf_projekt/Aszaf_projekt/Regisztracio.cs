@@ -53,8 +53,7 @@ namespace Aszaf_projekt
 
                 MessageBox.Show("Helytelen Email vagy jelszó!");
             }
-            Form1 form1 = new Form1();
-            form1.Show();
+            
             this.Hide(); // vagy this.Close(); ha végleg be akarod zárni a Form2-t
         }
 
@@ -70,37 +69,56 @@ namespace Aszaf_projekt
             {
                 using (StreamWriter writer = new StreamWriter(filePath))
                 {
-                    writer.WriteLine("Felhasználónév: " + nev1,nev2);
+                    writer.WriteLine("Felhasználónév: " + felnev);
                     writer.WriteLine("Jelszó:" + jelszo);
-                    if (textBox3.Text == null)
-                    {
-                        MessageBox.Show("Add meg a Vezetéknevet");
-                    }
-                    if (textBox4.Text == null)
-                    {
-                        MessageBox.Show("Add meg a személynevet");
-                    }
-                    if (textBox5.Text == null)
-                    {
-                        MessageBox.Show("Add meg a Felhasználónevet!");
-                    }
-                    if (textBox6.Text == null)
-                    {
-                        MessageBox.Show("Add meg a Jelszót!");
-                    }
-                    if (textBox7.Text == null)
-                    {
-                        MessageBox.Show($"Add meg a jelszót újra!{MessageBoxIcon.Error}");
 
+                    if (string.IsNullOrWhiteSpace(textBox3.Text))
+                    {
+                        MessageBox.Show("Add meg a Vezetéknevet!", "Hiba", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        return;
                     }
 
+                    if (string.IsNullOrWhiteSpace(textBox4.Text))
+                    {
+                        MessageBox.Show("Add meg a Keresztnevet!", "Hiba", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        return;
+                    }
 
+                    if (string.IsNullOrWhiteSpace(textBox5.Text))
+                    {
+                        MessageBox.Show("Add meg a Felhasználónevet!", "Hiba", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        return;
+                    }
 
+                    if (string.IsNullOrWhiteSpace(textBox6.Text))
+                    {
+                        MessageBox.Show("Add meg a Jelszót!", "Hiba", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        return;
+                    }
 
+                    if (string.IsNullOrWhiteSpace(textBox7.Text))
+                    {
+                        MessageBox.Show("Add meg a jelszót újra!", "Hiba", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        return;
+                    }
+                    if (textBox6.Text != textBox7.Text)
+                    {
+                        MessageBox.Show("A jelszavak nem egyeznek!", "Hiba", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
 
-
-
+                    // Ha minden ki van töltve:
+                    MessageBox.Show("Sikeres regisztráció!", "Kész", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
+
+
+
+
+
+
+
+
+            
             }
             catch (Exception)
             {
@@ -108,6 +126,11 @@ namespace Aszaf_projekt
                 throw;
             }
 
+        }
+
+        public TabControl GetTabControl()
+        {
+            return reg;  // Visszaadja a reg TabControl-t
         }
     }
 }

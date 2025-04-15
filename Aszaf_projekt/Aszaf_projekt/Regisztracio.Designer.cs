@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.Regisztáció = new System.Windows.Forms.TabControl();
+            this.reg = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.button1 = new System.Windows.Forms.Button();
             this.textBox2 = new System.Windows.Forms.TextBox();
@@ -47,20 +47,20 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.Regisztáció.SuspendLayout();
+            this.reg.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
             this.SuspendLayout();
             // 
-            // Regisztáció
+            // reg
             // 
-            this.Regisztáció.Controls.Add(this.tabPage1);
-            this.Regisztáció.Controls.Add(this.tabPage2);
-            this.Regisztáció.Location = new System.Drawing.Point(234, 42);
-            this.Regisztáció.Name = "Regisztáció";
-            this.Regisztáció.SelectedIndex = 0;
-            this.Regisztáció.Size = new System.Drawing.Size(245, 345);
-            this.Regisztáció.TabIndex = 0;
+            this.reg.Controls.Add(this.tabPage1);
+            this.reg.Controls.Add(this.tabPage2);
+            this.reg.Location = new System.Drawing.Point(2, 12);
+            this.reg.Name = "reg";
+            this.reg.SelectedIndex = 0;
+            this.reg.Size = new System.Drawing.Size(245, 345);
+            this.reg.TabIndex = 0;
             // 
             // tabPage1
             // 
@@ -255,10 +255,10 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.Regisztáció);
+            this.Controls.Add(this.reg);
             this.Name = "Regisztracio";
             this.Text = "Regisztracio";
-            this.Regisztáció.ResumeLayout(false);
+            this.reg.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
             this.tabPage2.ResumeLayout(false);
@@ -269,7 +269,7 @@
 
         #endregion
 
-        private System.Windows.Forms.TabControl Regisztáció;
+        private System.Windows.Forms.TabControl reg;
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.TextBox textBox2;

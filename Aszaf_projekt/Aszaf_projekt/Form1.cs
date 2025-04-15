@@ -20,7 +20,8 @@ namespace Aszaf_projekt
             comboBox1.Items.Add("Luxus Tengerparti Suite");
             comboBox1.Items.Add("Romantikus Kert Suite");
             comboBox1.Items.Add("Tóparti Nyugalom Suite");
-
+      
+    
 
 
         }
@@ -135,10 +136,68 @@ namespace Aszaf_projekt
 
         private void toolStripMenuItem1_Click(object sender, EventArgs e)
         {
+            //Regisztracio RegisztracioForm = new Regisztracio();
+            //RegisztracioForm.Show();
             Regisztracio RegisztracioForm = new Regisztracio();
+
+            // Csak a TabControl legyen látható, a form többi része ne jelenjen meg
+            RegisztracioForm.FormBorderStyle = FormBorderStyle.None;  // Nincs ablakkeret
+            RegisztracioForm.StartPosition = FormStartPosition.CenterScreen;  // A form középre kerül
+            RegisztracioForm.Size = RegisztracioForm.GetTabControl().Size;  // Beállítjuk a Form méretét a TabControl méretéhez
+            RegisztracioForm.Location = this.Location;  // A Form helyzetét a jelenlegi form pozíciójára állítjuk
+
+          
+
+            // Megjelenítjük a Regisztracio formot
             RegisztracioForm.Show();
-            this.Hide();
-            
+
         }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label5_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label4_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label6_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label7_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label8_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label9_Click(object sender, EventArgs e)
+        {
+
+        }
+
+      
     }
 }
