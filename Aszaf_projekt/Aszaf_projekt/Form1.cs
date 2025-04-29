@@ -198,6 +198,17 @@ namespace Aszaf_projekt
 
         }
 
-      
+    
+
+        private void panel1_Paint_1(object sender, PaintEventArgs e)
+        {
+            this.SetStyle(ControlStyles.SupportsTransparentBackColor, true);
+            this.BackColor = Color.FromArgb(100, Color.Gray); // 100 = transparency level
+        }
+
+        private void label10_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -71,7 +71,16 @@ namespace Aszaf_projekt
                 {
                     writer.WriteLine("Felhasználónév: " + felnev);
                     writer.WriteLine("Jelszó:" + jelszo);
-
+                    if (string.IsNullOrWhiteSpace(textBox1.Text))
+                    {
+                        MessageBox.Show("Add meg a Felhasználóneved!", "Hiba", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        return;
+                    }
+                    if (string.IsNullOrWhiteSpace(textBox2.Text))
+                    {
+                        MessageBox.Show("Add meg a Jelszavad!", "Hiba", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        return;
+                    }
                     if (string.IsNullOrWhiteSpace(textBox3.Text))
                     {
                         MessageBox.Show("Add meg a Vezetéknevet!", "Hiba", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -131,6 +140,16 @@ namespace Aszaf_projekt
         public TabControl GetTabControl()
         {
             return reg;  // Visszaadja a reg TabControl-t
+        }
+
+        private void tabPage1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox2_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

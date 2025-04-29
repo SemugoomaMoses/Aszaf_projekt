@@ -76,6 +76,7 @@
             this.tabPage1.Size = new System.Drawing.Size(237, 319);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Bejelentkezés";
+            this.tabPage1.Click += new System.EventHandler(this.tabPage1_Click);
             // 
             // button1
             // 
@@ -96,6 +97,7 @@
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(100, 20);
             this.textBox2.TabIndex = 3;
+            this.textBox2.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
             // 
             // label2
             // 
