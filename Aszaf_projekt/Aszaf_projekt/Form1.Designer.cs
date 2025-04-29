@@ -51,13 +51,13 @@
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.foglalásToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.aktuálisFoglalásokToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel1 = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).BeginInit();
             this.menuStrip1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -84,7 +84,6 @@
             this.label2.Size = new System.Drawing.Size(151, 24);
             this.label2.TabIndex = 1;
             this.label2.Text = "Felnőttek száma:";
-            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // numericUpDown1
             // 
@@ -114,7 +113,6 @@
             this.label3.Size = new System.Drawing.Size(154, 24);
             this.label3.TabIndex = 4;
             this.label3.Text = "Gyerekek száma:";
-            this.label3.Click += new System.EventHandler(this.label3_Click);
             // 
             // label4
             // 
@@ -128,7 +126,6 @@
             this.label4.Size = new System.Drawing.Size(57, 24);
             this.label4.TabIndex = 5;
             this.label4.Text = "Suite:";
-            this.label4.Click += new System.EventHandler(this.label4_Click);
             // 
             // comboBox1
             // 
@@ -152,7 +149,6 @@
             this.label5.Size = new System.Drawing.Size(136, 24);
             this.label5.TabIndex = 7;
             this.label5.Text = "Szobák száma:";
-            this.label5.Click += new System.EventHandler(this.label5_Click);
             // 
             // numericUpDown3
             // 
@@ -174,7 +170,6 @@
             this.label6.Size = new System.Drawing.Size(69, 24);
             this.label6.TabIndex = 9;
             this.label6.Text = "Dátum:";
-            this.label6.Click += new System.EventHandler(this.label6_Click);
             // 
             // label7
             // 
@@ -188,7 +183,6 @@
             this.label7.Size = new System.Drawing.Size(121, 24);
             this.label7.TabIndex = 10;
             this.label7.Text = "Bejelntkezés:";
-            this.label7.Click += new System.EventHandler(this.label7_Click);
             // 
             // label8
             // 
@@ -202,7 +196,6 @@
             this.label8.Size = new System.Drawing.Size(125, 24);
             this.label8.TabIndex = 11;
             this.label8.Text = "Kijelentkezés:";
-            this.label8.Click += new System.EventHandler(this.label8_Click);
             // 
             // dateTimePicker1
             // 
@@ -232,7 +225,6 @@
             this.label9.Size = new System.Drawing.Size(80, 24);
             this.label9.TabIndex = 14;
             this.label9.Text = "Reggeli:";
-            this.label9.Click += new System.EventHandler(this.label9_Click);
             // 
             // checkBox1
             // 
@@ -280,7 +272,6 @@
             this.label10.Size = new System.Drawing.Size(49, 24);
             this.label10.TabIndex = 18;
             this.label10.Text = "Név:";
-            this.label10.Click += new System.EventHandler(this.label10_Click);
             // 
             // textBox1
             // 
@@ -294,7 +285,9 @@
             // menuStrip1
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripMenuItem1});
+            this.toolStripMenuItem1,
+            this.foglalásToolStripMenuItem,
+            this.aktuálisFoglalásokToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(800, 24);
@@ -308,14 +301,18 @@
             this.toolStripMenuItem1.Text = "Regisztráció";
             this.toolStripMenuItem1.Click += new System.EventHandler(this.toolStripMenuItem1_Click);
             // 
-            // pictureBox1
+            // foglalásToolStripMenuItem
             // 
-            this.pictureBox1.Location = new System.Drawing.Point(-23, -46);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(100, 50);
-            this.pictureBox1.TabIndex = 21;
-            this.pictureBox1.TabStop = false;
+            this.foglalásToolStripMenuItem.Name = "foglalásToolStripMenuItem";
+            this.foglalásToolStripMenuItem.Size = new System.Drawing.Size(62, 20);
+            this.foglalásToolStripMenuItem.Text = "Foglalás";
+            // 
+            // aktuálisFoglalásokToolStripMenuItem
+            // 
+            this.aktuálisFoglalásokToolStripMenuItem.Name = "aktuálisFoglalásokToolStripMenuItem";
+            this.aktuálisFoglalásokToolStripMenuItem.Size = new System.Drawing.Size(118, 20);
+            this.aktuálisFoglalásokToolStripMenuItem.Text = "Aktuális foglalások";
+            this.aktuálisFoglalásokToolStripMenuItem.Click += new System.EventHandler(this.aktuálisFoglalásokToolStripMenuItem_Click);
             // 
             // panel1
             // 
@@ -335,7 +332,6 @@
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(800, 478);
-            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.button1);
@@ -364,13 +360,11 @@
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "Form1";
-            this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).EndInit();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -400,8 +394,9 @@
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
-        private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.ToolStripMenuItem foglalásToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem aktuálisFoglalásokToolStripMenuItem;
     }
 }
 

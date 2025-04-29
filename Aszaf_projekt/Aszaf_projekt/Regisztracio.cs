@@ -43,7 +43,21 @@ namespace Aszaf_projekt
                     //nev
                     writer.WriteLine("Felhasználónév: " + nev);
                     writer.WriteLine("Jelszó:" + jelszo);
-                    MessageBox.Show("Sikeres Bejelentkezés!");
+                    if (string.IsNullOrWhiteSpace(textBox1.Text))
+                    {
+                        MessageBox.Show("Add meg a Felhasználóneved!", "Hiba", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        return;
+                    }
+                    if (string.IsNullOrWhiteSpace(textBox2.Text))
+                    {
+                        MessageBox.Show("Add meg a Jelszavad!", "Hiba", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        return;
+                    }
+                    else
+                    {
+                        MessageBox.Show("Sikeres Bejelentkezés!");
+                    }
+                        
                 }
             }
 
@@ -71,16 +85,7 @@ namespace Aszaf_projekt
                 {
                     writer.WriteLine("Felhasználónév: " + felnev);
                     writer.WriteLine("Jelszó:" + jelszo);
-                    if (string.IsNullOrWhiteSpace(textBox1.Text))
-                    {
-                        MessageBox.Show("Add meg a Felhasználóneved!", "Hiba", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                        return;
-                    }
-                    if (string.IsNullOrWhiteSpace(textBox2.Text))
-                    {
-                        MessageBox.Show("Add meg a Jelszavad!", "Hiba", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                        return;
-                    }
+                    
                     if (string.IsNullOrWhiteSpace(textBox3.Text))
                     {
                         MessageBox.Show("Add meg a Vezetéknevet!", "Hiba", MessageBoxButtons.OK, MessageBoxIcon.Warning);

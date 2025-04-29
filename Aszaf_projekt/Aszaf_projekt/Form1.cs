@@ -13,6 +13,7 @@ namespace Aszaf_projekt
 {
     public partial class Form1 : Form
     {
+      
         public Form1()
         {
             InitializeComponent();
@@ -153,62 +154,23 @@ namespace Aszaf_projekt
 
         }
 
-        private void Form1_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label3_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label5_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label4_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label6_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label7_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label8_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label9_Click(object sender, EventArgs e)
-        {
-
-        }
-
-    
-
         private void panel1_Paint_1(object sender, PaintEventArgs e)
         {
             this.SetStyle(ControlStyles.SupportsTransparentBackColor, true);
             this.BackColor = Color.FromArgb(100, Color.Gray); // 100 = transparency level
         }
 
-        private void label10_Click(object sender, EventArgs e)
+        private void toolStripMenuItem3_Click(object sender, EventArgs e)
         {
+            
+        }
 
+        private void aktuálisFoglalásokToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+           
+            Foglalasok foglalasokForm = new Foglalasok();
+            foglalasokForm.Show();
+            this.Hide();
         }
     }
 }
