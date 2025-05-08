@@ -81,5 +81,30 @@ namespace Aszaf_projekt
             RegisztracioForm.Location = this.Location;  // A Form helyzetét a jelenlegi form pozíciójára állítjuk
 
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+     
+            try
+            {
+                // A foglalas.txt fájl törlése (üresítése)
+                File.WriteAllText("foglalas.txt", string.Empty);
+                label2.Text = string.Empty;
+
+
+                // Üzenet a felhasználónak
+                MessageBox.Show("A foglalásokat sikeresen töröltük.");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Hiba történt a fájl törlésekor: " + ex.Message);
+            }
+        }
+
+        private void bezárásToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
     }
 }
+

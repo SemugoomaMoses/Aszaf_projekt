@@ -13,7 +13,7 @@ namespace Aszaf_projekt
 {
     public partial class Form1 : Form
     {
-      
+
         public Form1()
         {
             InitializeComponent();
@@ -21,31 +21,35 @@ namespace Aszaf_projekt
             comboBox1.Items.Add("Luxus Tengerparti Suite");
             comboBox1.Items.Add("Romantikus Kert Suite");
             comboBox1.Items.Add("Tóparti Nyugalom Suite");
-      
-    
+            // PictureBox beállítás
+            pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
+
+            // Esemény hozzárendelés
+            comboBox1.SelectedIndexChanged += comboBox1_SelectedIndexChanged;
+            
 
 
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-           
-                string nev = textBox1.Text.Trim();
-                int felnottSzam = (int)numericUpDown1.Value;
-                int gyerekekSzam = (int)numericUpDown2.Value;
+
+            string nev = textBox1.Text.Trim();
+            int felnottSzam = (int)numericUpDown1.Value;
+            int gyerekekSzam = (int)numericUpDown2.Value;
             string filePath = Path.Combine(Application.StartupPath, "foglalas.txt");
             bool mindenRendben = true;
             string uzenet = "";
             string uzenet2 = "";
 
             try
+            {
+                using (StreamWriter writer = new StreamWriter(filePath))
                 {
-                    using (StreamWriter writer = new StreamWriter(filePath))
-                    {
                     //nev
-                        writer.WriteLine("Név: " + nev);
+                    writer.WriteLine("Név: " + nev);
                     //felnottek szama
-                        if (felnottSzam == 0)
+                    if (felnottSzam == 0)
                     {
                         writer.WriteLine("Nincs felnőtt");
                     }
@@ -53,8 +57,8 @@ namespace Aszaf_projekt
                     {
                         writer.WriteLine("Felnőttek száma: " + felnottSzam);
                     }
-                    
-                     //gyerekek szama
+
+                    //gyerekek szama
                     if (gyerekekSzam == 0)
                     {
                         writer.WriteLine("Nincs gyermek");
@@ -67,9 +71,9 @@ namespace Aszaf_projekt
                     if (comboBox1.SelectedItem != null)
                     {
                         string kivalasztott = comboBox1.SelectedItem.ToString();
-                        
+
                         writer.WriteLine("Suite: " + kivalasztott);
-                        
+
                     }
                     else
                     {
@@ -125,13 +129,13 @@ namespace Aszaf_projekt
 
                 }
                 MessageBox.Show("A foglalás elkészült!");
-                }
-                catch (Exception)
-                {
-                    // Itt írhatsz hibaüzenetet, vagy logolhatod a hibát
-                    MessageBox.Show("Hiba történt a mentés során.");
-                }
-            
+            }
+            catch (Exception)
+            {
+                // Itt írhatsz hibaüzenetet, vagy logolhatod a hibát
+                MessageBox.Show("Hiba történt a mentés során.");
+            }
+
 
         }
 
@@ -147,7 +151,7 @@ namespace Aszaf_projekt
             RegisztracioForm.Size = RegisztracioForm.GetTabControl().Size;  // Beállítjuk a Form méretét a TabControl méretéhez
             RegisztracioForm.Location = this.Location;  // A Form helyzetét a jelenlegi form pozíciójára állítjuk
 
-          
+
 
             // Megjelenítjük a Regisztracio formot
             RegisztracioForm.Show();
@@ -162,15 +166,99 @@ namespace Aszaf_projekt
 
         private void toolStripMenuItem3_Click(object sender, EventArgs e)
         {
-            
+
         }
 
         private void aktuálisFoglalásokToolStripMenuItem_Click(object sender, EventArgs e)
         {
-           
+
             Foglalasok foglalasokForm = new Foglalasok();
             foglalasokForm.Show();
             this.Hide();
+        }
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                string selected = comboBox1.SelectedItem.ToString();
+
+                switch (selected)
+                {
+                    case "Panoráma Suite":
+                        pictureBox1.Image = Image.FromFile("kep1.jpg");
+                        break;
+                    case "Luxus Tengerparti Suite":
+                        pictureBox1.Image = Image.FromFile("kep2.jpg");
+                        break;
+                    case "Romantikus Kert Suite":
+                        pictureBox1.Image = Image.FromFile("kep3.jpeg");
+                        break;
+                    case "Tóparti Nyugalom Suite":
+                        pictureBox1.Image = Image.FromFile("kep4.jfif");
+                        break;
+
+                    default:
+                        pictureBox1.Image = null;
+                        break;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Nem sikerült betölteni a képet: " + ex.Message);
+            }
+        }
+
+        private void bezárásToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+           
+
+            // Program leállítása
+            Application.Exit();
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label4_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label6_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label7_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label5_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label10_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label8_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label9_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
