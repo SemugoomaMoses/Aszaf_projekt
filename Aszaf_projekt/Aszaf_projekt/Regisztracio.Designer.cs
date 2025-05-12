@@ -260,6 +260,7 @@
             this.Controls.Add(this.reg);
             this.Name = "Regisztracio";
             this.Text = "Regisztracio";
+            this.Load += new System.EventHandler(this.Regisztracio_Load);
             this.reg.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();

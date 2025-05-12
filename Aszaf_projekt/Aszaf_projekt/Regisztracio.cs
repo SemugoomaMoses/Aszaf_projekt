@@ -156,5 +156,10 @@ namespace Aszaf_projekt
         {
 
         }
+
+        private void Regisztracio_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -120,11 +120,16 @@ namespace Aszaf_projekt
                     //Reggli
                     if (checkBox1.Checked)
                     {
-                        writer.WriteLine("Étkezés: Igen");
+                        writer.WriteLine("Ellátás: Igen");
                     }
                     else
                     {
-                        writer.WriteLine("Étkezés: Nem");
+                        writer.WriteLine("Ellátás: Nem");
+                    }
+                    if (!radioButton1.Checked && !radioButton2.Checked && !radioButton3.Checked)
+                    {
+                        MessageBox.Show("Kérlek, válassz ki fizetési módot!", "Hiba", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        return;
                     }
 
                 }
@@ -215,10 +220,16 @@ namespace Aszaf_projekt
             // Program leállítása
             Application.Exit();
         }
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            // Idő és dátum kiírása label12-re
+            label12.Text = DateTime.Now.ToString("yyyy.MM.dd. HH:mm:ss");
+        }
 
         private void Form1_Load(object sender, EventArgs e)
         {
-
+            timer1.Interval = 1000; // 1 másodperc
+            timer1.Start();
         }
 
         private void label3_Click(object sender, EventArgs e)
