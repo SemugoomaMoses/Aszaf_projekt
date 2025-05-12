@@ -32,43 +32,38 @@ namespace Aszaf_projekt
 
         private void button1_Click(object sender, EventArgs e)
         {
-            string nev = textBox1.Text.Trim();
-            string jelszo=textBox2.Text.Trim();
-            
-            string filePath = Path.Combine(Application.StartupPath, "felhasznalok.txt");
-            try
+            string beirtFelhasznalo = textBox1.Text.Trim();
+            string beirtJelszo = textBox2.Text.Trim();
+
+            string[] sorok = File.ReadAllLines("felhasznalok.txt");
+
+            string fileFelhasznalo = "";
+            string fileJelszo = "";
+
+            foreach (string sor in sorok)
             {
-                using (StreamWriter writer = new StreamWriter(filePath))
+                if (sor.StartsWith("Felhasználónév:"))
                 {
-                    //nev
-                    writer.WriteLine("Felhasználónév: " + nev);
-                    writer.WriteLine("Jelszó:" + jelszo);
-                    if (string.IsNullOrWhiteSpace(textBox1.Text))
-                    {
-                        MessageBox.Show("Add meg a Felhasználóneved!", "Hiba", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                        return;
-                    }
-                    if (string.IsNullOrWhiteSpace(textBox2.Text))
-                    {
-                        MessageBox.Show("Add meg a Jelszavad!", "Hiba", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                        return;
-                    }
-                    else
-                    {
-                        MessageBox.Show("Sikeres Bejelentkezés!");
-                    }
-                        
+                    fileFelhasznalo = sor.Replace("Felhasználónév:", "").Trim();
+                }
+                else if (sor.StartsWith("Jelszó:"))
+                {
+                    fileJelszo = sor.Replace("Jelszó:", "").Trim();
                 }
             }
 
-
-            catch (Exception)
+            if (beirtFelhasznalo == fileFelhasznalo && beirtJelszo == fileJelszo)
             {
-
-                MessageBox.Show("Helytelen Email vagy jelszó!");
+                MessageBox.Show("Sikeres bejelentkezés!", "Belépés");
+                this.Close();
+                // Ide jöhet más form megnyitása, ha kell
             }
-            
-            this.Hide(); // vagy this.Close(); ha végleg be akarod zárni a Form2-t
+            else
+            {
+                MessageBox.Show("Hibás felhasználónév vagy jelszó!", "Hiba");
+            }
+
+
         }
 
         private void button2_Click(object sender, EventArgs e)
