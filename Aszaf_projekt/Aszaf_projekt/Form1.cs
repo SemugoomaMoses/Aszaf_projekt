@@ -46,19 +46,25 @@ namespace Aszaf_projekt
             {
                 using (StreamWriter writer = new StreamWriter(filePath))
                 {
-                    //nev
+                    // nev
                     writer.WriteLine("Név: " + nev);
-                    //felnottek szama
-                    if (felnottSzam == 0)
+
+                    if (string.IsNullOrWhiteSpace(comboBox1.Text))
                     {
-                        writer.WriteLine("Nincs felnőtt");
+                        MessageBox.Show("Add meg a felnőttek számát!", "Hiba", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+                    else if (felnottSzam < 1)
+                    {
+                        MessageBox.Show("Legalább egy felnőttnek lennie kell a foglaláshoz!", "Hiba", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
                     }
                     else
                     {
                         writer.WriteLine("Felnőttek száma: " + felnottSzam);
                     }
 
-                    //gyerekek szama
+                    // gyerekek szama
                     if (gyerekekSzam == 0)
                     {
                         writer.WriteLine("Nincs gyermek");
@@ -67,25 +73,32 @@ namespace Aszaf_projekt
                     {
                         writer.WriteLine("Gyerekek száma: " + gyerekekSzam);
                     }
-                    //suite 
+
+                    // suite 
                     if (comboBox1.SelectedItem != null)
                     {
                         string kivalasztott = comboBox1.SelectedItem.ToString();
-
                         writer.WriteLine("Suite: " + kivalasztott);
-
                     }
                     else
                     {
-                        MessageBox.Show("Kérlek válassz ki egy elemet a listából!");
+                        MessageBox.Show("Kérlek válassz ki Suitet!");
+                        return;
                     }
-                    //szobák száma
+
+                    // szobák száma
                     if (numericUpDown3.Value != null)
                     {
                         string szoba = numericUpDown3.Value.ToString();
                         writer.WriteLine("Szobák száma:" + szoba);
                     }
-                    //érkezés
+                    else
+                    {
+                        MessageBox.Show("Add meg a szobák számát!", "Hiba", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+
+                    // érkezés
                     if (dateTimePicker1.Value.Date == DateTime.Today)
                     {
                         mindenRendben = false;
@@ -104,9 +117,11 @@ namespace Aszaf_projekt
                     }
                     else
                     {
-                        MessageBox.Show(uzenet, "Hiányzó vagy hibás adatok", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        MessageBox.Show(uzenet, "Add meg az érkezés dátumát!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        return;
                     }
-                    //távozás
+
+                    // távozás
                     if (mindenRendben)
                     {
                         DateTime tavozas = dateTimePicker2.Value;
@@ -115,9 +130,11 @@ namespace Aszaf_projekt
                     }
                     else
                     {
-                        MessageBox.Show(uzenet2, "Hiányzó vagy hibás adatok", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        MessageBox.Show(uzenet2, "Add meg a távozás dátumát!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        return;
                     }
-                    //Reggli
+
+                    // Reggeli
                     if (checkBox1.Checked)
                     {
                         writer.WriteLine("Ellátás: Igen");
@@ -126,13 +143,26 @@ namespace Aszaf_projekt
                     {
                         writer.WriteLine("Ellátás: Nem");
                     }
+                    if (radioButton1.Checked)
+                    {
+                        writer.WriteLine($"Fizetési mód: Készpénz");
+                    }
+                    if (radioButton2.Checked)
+                    {
+                        writer.WriteLine($"Fizetési mód: Bankkártya");
+                    }
+                    if (radioButton3.Checked)
+                    {
+                        writer.WriteLine($"Fizetési mód: SZÉP kártya");
+                    }
                     if (!radioButton1.Checked && !radioButton2.Checked && !radioButton3.Checked)
                     {
                         MessageBox.Show("Kérlek, válassz ki fizetési módot!", "Hiba", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                         return;
                     }
-
+                    
                 }
+
                 MessageBox.Show("A foglalás elkészült!");
             }
             catch (Exception)
@@ -140,8 +170,6 @@ namespace Aszaf_projekt
                 // Itt írhatsz hibaüzenetet, vagy logolhatod a hibát
                 MessageBox.Show("Hiba történt a mentés során.");
             }
-
-
         }
 
         private void toolStripMenuItem1_Click(object sender, EventArgs e)
@@ -228,48 +256,11 @@ namespace Aszaf_projekt
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            label12.Text = DateTime.Now.ToString("yyyy.MM.dd HH:mm:ss");
             timer1.Interval = 1000; // 1 másodperc
             timer1.Start();
         }
 
-        private void label3_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label4_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label6_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label7_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label5_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label10_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label8_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label9_Click(object sender, EventArgs e)
-        {
-
-        }
+        
     }
 }

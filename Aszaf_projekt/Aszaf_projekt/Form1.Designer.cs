@@ -55,6 +55,7 @@
             this.foglalásToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aktuálisFoglalásokToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.bezárásToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label11 = new System.Windows.Forms.Label();
             this.radioButton3 = new System.Windows.Forms.RadioButton();
@@ -75,11 +76,11 @@
             // 
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.Color.Transparent;
-            this.label1.Font = new System.Drawing.Font("Mongolian Baiti", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(274, 41);
+            this.label1.Font = new System.Drawing.Font("Mongolian Baiti", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(280, 41);
             this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(182, 23);
+            this.label1.Size = new System.Drawing.Size(252, 30);
             this.label1.TabIndex = 0;
             this.label1.Text = "Foglalja le szállását!";
             // 
@@ -124,7 +125,6 @@
             this.label3.Size = new System.Drawing.Size(190, 24);
             this.label3.TabIndex = 4;
             this.label3.Text = "GYEREKEK SZÁMA:";
-            this.label3.Click += new System.EventHandler(this.label3_Click);
             // 
             // label4
             // 
@@ -138,7 +138,6 @@
             this.label4.Size = new System.Drawing.Size(82, 24);
             this.label4.TabIndex = 5;
             this.label4.Text = "SUITE:";
-            this.label4.Click += new System.EventHandler(this.label4_Click);
             // 
             // comboBox1
             // 
@@ -164,7 +163,6 @@
             this.label5.Size = new System.Drawing.Size(166, 24);
             this.label5.TabIndex = 7;
             this.label5.Text = "SZOBÁK SZÁMA:";
-            this.label5.Click += new System.EventHandler(this.label5_Click);
             // 
             // numericUpDown3
             // 
@@ -186,7 +184,6 @@
             this.label6.Size = new System.Drawing.Size(82, 24);
             this.label6.TabIndex = 9;
             this.label6.Text = "DÁTUM:";
-            this.label6.Click += new System.EventHandler(this.label6_Click);
             // 
             // label7
             // 
@@ -200,7 +197,6 @@
             this.label7.Size = new System.Drawing.Size(178, 24);
             this.label7.TabIndex = 10;
             this.label7.Text = "BEJELENTKEZÉS:";
-            this.label7.Click += new System.EventHandler(this.label7_Click);
             // 
             // label8
             // 
@@ -214,7 +210,6 @@
             this.label8.Size = new System.Drawing.Size(178, 24);
             this.label8.TabIndex = 11;
             this.label8.Text = "KIJELENTKEZÉS:";
-            this.label8.Click += new System.EventHandler(this.label8_Click);
             // 
             // dateTimePicker1
             // 
@@ -244,7 +239,6 @@
             this.label9.Size = new System.Drawing.Size(106, 24);
             this.label9.TabIndex = 14;
             this.label9.Text = "ELLÁTÁS:";
-            this.label9.Click += new System.EventHandler(this.label9_Click);
             // 
             // checkBox1
             // 
@@ -292,7 +286,6 @@
             this.label10.Size = new System.Drawing.Size(58, 24);
             this.label10.TabIndex = 18;
             this.label10.Text = "NÉV:";
-            this.label10.Click += new System.EventHandler(this.label10_Click);
             // 
             // textBox1
             // 
@@ -310,7 +303,8 @@
             this.toolStripMenuItem1,
             this.foglalásToolStripMenuItem,
             this.aktuálisFoglalásokToolStripMenuItem,
-            this.bezárásToolStripMenuItem});
+            this.bezárásToolStripMenuItem,
+            this.toolStripMenuItem2});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(800, 24);
@@ -347,6 +341,12 @@
             this.bezárásToolStripMenuItem.Size = new System.Drawing.Size(58, 20);
             this.bezárásToolStripMenuItem.Text = "Bezárás";
             this.bezárásToolStripMenuItem.Click += new System.EventHandler(this.bezárásToolStripMenuItem_Click);
+            // 
+            // toolStripMenuItem2
+            // 
+            this.toolStripMenuItem2.Name = "toolStripMenuItem2";
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(125, 20);
+            this.toolStripMenuItem2.Text = "toolStripMenuItem2";
             // 
             // panel1
             // 
@@ -442,9 +442,10 @@
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(691, 41);
+            this.label12.Font = new System.Drawing.Font("Consolas", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label12.Location = new System.Drawing.Point(600, 41);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(41, 13);
+            this.label12.Size = new System.Drawing.Size(80, 22);
             this.label12.TabIndex = 23;
             this.label12.Text = "label12";
             // 
@@ -515,6 +516,7 @@
         private System.Windows.Forms.RadioButton radioButton1;
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem2;
     }
 }
 

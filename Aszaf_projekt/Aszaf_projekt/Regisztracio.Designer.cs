@@ -204,9 +204,9 @@
             this.label7.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.label7.Location = new System.Drawing.Point(7, 164);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(115, 13);
+            this.label7.Size = new System.Drawing.Size(111, 13);
             this.label7.TabIndex = 4;
-            this.label7.Text = "Conform Password:";
+            this.label7.Text = "Confirm Password:";
             // 
             // label6
             // 
