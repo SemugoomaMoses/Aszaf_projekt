@@ -89,10 +89,11 @@ namespace Aszaf_projekt
                     // szobák száma
                     if (numericUpDown3.Value != null)
                     {
+                        
                         string szoba = numericUpDown3.Value.ToString();
                         writer.WriteLine("Szobák száma:" + szoba);
                     }
-                    else
+                    else if (numericUpDown3.Value==null)
                     {
                         MessageBox.Show("Add meg a szobák számát!", "Hiba", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         return;
@@ -261,6 +262,32 @@ namespace Aszaf_projekt
             timer1.Start();
         }
 
-        
+        private void toolStripMenuItem2_Click(object sender, EventArgs e)
+        {
+            using (ColorDialog colorDialog = new ColorDialog())
+            {
+                if (colorDialog.ShowDialog() == DialogResult.OK)
+                {
+                    Color selectedColor = colorDialog.Color;
+                    SetForeColorRecursive(this, selectedColor);
+                }
+            }
+        }
+        private void SetForeColorRecursive(Control parent, Color color)
+        {
+            foreach (Control control in parent.Controls)
+            {
+                control.ForeColor = color;
+
+                // Ha a vezérlőnek is vannak gyerekei, rekurzívan állítsuk be
+                if (control.HasChildren)
+                {
+                    SetForeColorRecursive(control, color);
+                }
+            }
+
+            // Maga az űrlap színe is változzon (pl. ha van közvetlenül rajta szöveg)
+            parent.ForeColor = color;
+        }
     }
 }
