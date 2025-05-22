@@ -21,14 +21,18 @@ namespace Aszaf_projekt
             comboBox1.Items.Add("Luxus Tengerparti Suite");
             comboBox1.Items.Add("Romantikus Kert Suite");
             comboBox1.Items.Add("Tóparti Nyugalom Suite");
-            // PictureBox beállítás
+            
             pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
 
-            // Esemény hozzárendelés
+            
             comboBox1.SelectedIndexChanged += comboBox1_SelectedIndexChanged;
             
 
 
+        }
+        public string Form1TextBoxValue
+        {
+            get { return textBox1.Text; }
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -47,11 +51,21 @@ namespace Aszaf_projekt
                 using (StreamWriter writer = new StreamWriter(filePath))
                 {
                     // nev
-                    writer.WriteLine("Név: " + nev);
+                    
+                    if (string.IsNullOrWhiteSpace(textBox1.Text))
+                    {
+                        MessageBox.Show("Kérlek, adj meg egy nevet a foglaláshoz!", "Hiba", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+                    else
+                    {
+                        
+                        writer.WriteLine("Név: " + nev);
+                    }
 
                     if (string.IsNullOrWhiteSpace(comboBox1.Text))
                     {
-                        MessageBox.Show("Add meg a felnőttek számát!", "Hiba", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("Add meg a Suitet!", "Hiba", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         return;
                     }
                     else if (felnottSzam < 1)
@@ -82,68 +96,78 @@ namespace Aszaf_projekt
                     }
                     else
                     {
-                        MessageBox.Show("Kérlek válassz ki Suitet!");
+                        MessageBox.Show("Kérlek, válassz ki egy suite típust a foglaláshoz!", "Hiba", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                         return;
                     }
 
                     // szobák száma
-                    if (numericUpDown3.Value != null)
+                    if (numericUpDown3.Value > 0)
                     {
-                        
                         string szoba = numericUpDown3.Value.ToString();
-                        writer.WriteLine("Szobák száma:" + szoba);
+                        writer.WriteLine("Szobák száma: " + szoba);
                     }
-                    else if (numericUpDown3.Value==null)
+                    else
                     {
-                        MessageBox.Show("Add meg a szobák számát!", "Hiba", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("Válassz legalább egy szobát!", "Hiba", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         return;
                     }
 
                     // érkezés
-                    if (dateTimePicker1.Value.Date == DateTime.Today)
+                    if (dateTimePicker1.Value.Date < DateTime.Today)
                     {
                         mindenRendben = false;
                         uzenet += "A bejelentkezés dátuma nem lehet múltbeli dátum.\n";
                     }
-                    if (dateTimePicker2.Value.Date == DateTime.Today)
+                    if (dateTimePicker2.Value.Date < DateTime.Today)
                     {
                         mindenRendben = false;
-                        uzenet2 += "A bejelentkezés dátuma nem lehet múltbeli dátum.\n";
+                        uzenet2 += "A kijelentkezés dátuma nem lehet múltbeli dátum.\n";
                     }
+
                     if (mindenRendben)
                     {
                         DateTime erkezes = dateTimePicker1.Value;
-                        erkezes.ToString("yyyy.MM.dd");
-                        writer.WriteLine($"Érkezés:{erkezes.ToString("yyyy.MM.dd")}");
+                        writer.WriteLine($"Érkezés: {erkezes:yyyy.MM.dd}");
                     }
                     else
                     {
-                        MessageBox.Show(uzenet, "Add meg az érkezés dátumát!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        MessageBox.Show(uzenet + uzenet2, "Dátum hiba", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                         return;
                     }
 
                     // távozás
+                    if (dateTimePicker2.Value.Date <= DateTime.Today)
+                    {
+                        mindenRendben = false;
+                        uzenet2 += "A távozás dátuma nem lehet a mai nap vagy korábbi.\n";
+                    }
+
                     if (mindenRendben)
                     {
                         DateTime tavozas = dateTimePicker2.Value;
-                        tavozas.ToString("yyyy.MM.dd");
-                        writer.WriteLine($"Távozás:{tavozas.ToString("yyyy.MM.dd")}");
+                        writer.WriteLine($"Távozás: {tavozas:yyyy.MM.dd}");
                     }
                     else
                     {
                         MessageBox.Show(uzenet2, "Add meg a távozás dátumát!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                         return;
                     }
+                    //reggeli
+                    if (!checkBox1.Checked && !checkBox2.Checked)
+                    {
+                        MessageBox.Show("Kérlek, válaszd ki, hogy kérsz-e ellátást!", "Hiba", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        return;
+                    }
 
-                    // Reggeli
                     if (checkBox1.Checked)
                     {
                         writer.WriteLine("Ellátás: Igen");
                     }
-                    else
+                    else if (checkBox2.Checked)
                     {
                         writer.WriteLine("Ellátás: Nem");
                     }
+                    //fizetesi mod
                     if (radioButton1.Checked)
                     {
                         writer.WriteLine($"Fizetési mód: Készpénz");
@@ -161,33 +185,43 @@ namespace Aszaf_projekt
                         MessageBox.Show("Kérlek, válassz ki fizetési módot!", "Hiba", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                         return;
                     }
-                    
+                    string beirtNev = textBox1.Text.Trim();
+
+                    if (beirtNev == Regisztracio.RegisztraltTeljesNev)
+                    {
+                        Foglalasok foglalasokForm = new Foglalasok(beirtNev);
+                        foglalasokForm.Show();
+                    }
+                    else
+                    {
+                        MessageBox.Show("A megadott név nem egyezik a regisztrált névvel!");
+                    }
+
                 }
 
                 MessageBox.Show("A foglalás elkészült!");
             }
             catch (Exception)
             {
-                // Itt írhatsz hibaüzenetet, vagy logolhatod a hibát
+                
                 MessageBox.Show("Hiba történt a mentés során.");
             }
+
         }
 
         private void toolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            //Regisztracio RegisztracioForm = new Regisztracio();
-            //RegisztracioForm.Show();
+            
             Regisztracio RegisztracioForm = new Regisztracio();
 
-            // Csak a TabControl legyen látható, a form többi része ne jelenjen meg
-            RegisztracioForm.FormBorderStyle = FormBorderStyle.None;  // Nincs ablakkeret
-            RegisztracioForm.StartPosition = FormStartPosition.CenterScreen;  // A form középre kerül
-            RegisztracioForm.Size = RegisztracioForm.GetTabControl().Size;  // Beállítjuk a Form méretét a TabControl méretéhez
-            RegisztracioForm.Location = this.Location;  // A Form helyzetét a jelenlegi form pozíciójára állítjuk
+            
+            RegisztracioForm.FormBorderStyle = FormBorderStyle.None;  
+            RegisztracioForm.StartPosition = FormStartPosition.CenterScreen;  
+            RegisztracioForm.Size = RegisztracioForm.GetTabControl().Size;  
+            RegisztracioForm.Location = this.Location;  
 
 
-
-            // Megjelenítjük a Regisztracio formot
+           
             RegisztracioForm.Show();
 
         }
@@ -195,7 +229,7 @@ namespace Aszaf_projekt
         private void panel1_Paint_1(object sender, PaintEventArgs e)
         {
             this.SetStyle(ControlStyles.SupportsTransparentBackColor, true);
-            this.BackColor = Color.FromArgb(100, Color.Gray); // 100 = transparency level
+            this.BackColor = Color.FromArgb(100, Color.Gray); 
         }
 
         private void toolStripMenuItem3_Click(object sender, EventArgs e)
@@ -246,7 +280,7 @@ namespace Aszaf_projekt
         {
            
 
-            // Program leállítása
+            
             Application.Exit();
         }
         private void timer1_Tick(object sender, EventArgs e)
@@ -258,7 +292,7 @@ namespace Aszaf_projekt
         private void Form1_Load(object sender, EventArgs e)
         {
             label12.Text = DateTime.Now.ToString("yyyy.MM.dd HH:mm:ss");
-            timer1.Interval = 1000; // 1 másodperc
+            timer1.Interval = 1000; 
             timer1.Start();
         }
 
@@ -279,14 +313,14 @@ namespace Aszaf_projekt
             {
                 control.ForeColor = color;
 
-                // Ha a vezérlőnek is vannak gyerekei, rekurzívan állítsuk be
+                
                 if (control.HasChildren)
                 {
                     SetForeColorRecursive(control, color);
                 }
             }
 
-            // Maga az űrlap színe is változzon (pl. ha van közvetlenül rajta szöveg)
+            
             parent.ForeColor = color;
         }
     }

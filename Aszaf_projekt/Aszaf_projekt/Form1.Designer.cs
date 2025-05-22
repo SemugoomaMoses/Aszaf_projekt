@@ -54,8 +54,8 @@
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.foglalásToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aktuálisFoglalásokToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.bezárásToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
+            this.bezárásToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label11 = new System.Windows.Forms.Label();
             this.radioButton3 = new System.Windows.Forms.RadioButton();
@@ -246,9 +246,9 @@
             this.checkBox1.Location = new System.Drawing.Point(60, 332);
             this.checkBox1.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(87, 17);
+            this.checkBox1.Size = new System.Drawing.Size(77, 17);
             this.checkBox1.TabIndex = 15;
-            this.checkBox1.Text = "Teljes ellátás";
+            this.checkBox1.Text = "Igen kérek";
             this.checkBox1.UseVisualStyleBackColor = true;
             // 
             // checkBox2
@@ -257,9 +257,9 @@
             this.checkBox2.Location = new System.Drawing.Point(60, 355);
             this.checkBox2.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.checkBox2.Name = "checkBox2";
-            this.checkBox2.Size = new System.Drawing.Size(86, 17);
+            this.checkBox2.Size = new System.Drawing.Size(78, 17);
             this.checkBox2.TabIndex = 16;
-            this.checkBox2.Text = "Nincs ellátás";
+            this.checkBox2.Text = "Nem kérek";
             this.checkBox2.UseVisualStyleBackColor = true;
             // 
             // button1
@@ -334,14 +334,6 @@
             this.aktuálisFoglalásokToolStripMenuItem.Text = "Aktuális foglalások";
             this.aktuálisFoglalásokToolStripMenuItem.Click += new System.EventHandler(this.aktuálisFoglalásokToolStripMenuItem_Click);
             // 
-            // bezárásToolStripMenuItem
-            // 
-            this.bezárásToolStripMenuItem.ForeColor = System.Drawing.SystemColors.Control;
-            this.bezárásToolStripMenuItem.Name = "bezárásToolStripMenuItem";
-            this.bezárásToolStripMenuItem.Size = new System.Drawing.Size(58, 20);
-            this.bezárásToolStripMenuItem.Text = "Bezárás";
-            this.bezárásToolStripMenuItem.Click += new System.EventHandler(this.bezárásToolStripMenuItem_Click);
-            // 
             // toolStripMenuItem2
             // 
             this.toolStripMenuItem2.ForeColor = System.Drawing.SystemColors.ButtonFace;
@@ -349,6 +341,14 @@
             this.toolStripMenuItem2.Size = new System.Drawing.Size(63, 20);
             this.toolStripMenuItem2.Text = "Betűszín";
             this.toolStripMenuItem2.Click += new System.EventHandler(this.toolStripMenuItem2_Click);
+            // 
+            // bezárásToolStripMenuItem
+            // 
+            this.bezárásToolStripMenuItem.ForeColor = System.Drawing.SystemColors.Control;
+            this.bezárásToolStripMenuItem.Name = "bezárásToolStripMenuItem";
+            this.bezárásToolStripMenuItem.Size = new System.Drawing.Size(58, 20);
+            this.bezárásToolStripMenuItem.Text = "Bezárás";
+            this.bezárásToolStripMenuItem.Click += new System.EventHandler(this.bezárásToolStripMenuItem_Click);
             // 
             // panel1
             // 
@@ -447,9 +447,8 @@
             this.label12.Font = new System.Drawing.Font("Consolas", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.label12.Location = new System.Drawing.Point(600, 41);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(80, 22);
+            this.label12.Size = new System.Drawing.Size(0, 22);
             this.label12.TabIndex = 23;
-            this.label12.Text = "label12";
             // 
             // Form1
             // 

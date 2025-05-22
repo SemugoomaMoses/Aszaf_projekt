@@ -19,6 +19,7 @@ namespace Aszaf_projekt
         {
             InitializeComponent();
         }
+        public static string RegisztraltTeljesNev = "";
 
         private void groupBox1_Enter(object sender, EventArgs e)
         {
@@ -63,6 +64,8 @@ namespace Aszaf_projekt
                 MessageBox.Show("Hibás felhasználónév vagy jelszó!", "Hiba");
             }
 
+
+            
 
         }
 
@@ -115,6 +118,7 @@ namespace Aszaf_projekt
                         MessageBox.Show("A jelszavak nem egyeznek!", "Hiba", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         return;
                     }
+                    RegisztraltTeljesNev = textBox3.Text.Trim() + " " + textBox4.Text.Trim();
 
                     // Ha minden ki van töltve:
                     MessageBox.Show("Sikeres regisztráció!", "Kész", MessageBoxButtons.OK, MessageBoxIcon.Information);

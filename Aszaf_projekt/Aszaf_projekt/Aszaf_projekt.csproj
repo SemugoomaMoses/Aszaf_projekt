@@ -66,6 +66,12 @@
     <Compile Include="Regisztracio.Designer.cs">
       <DependentUpon>Regisztracio.cs</DependentUpon>
     </Compile>
+    <Compile Include="Userfoglalas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Userfoglalas.Designer.cs">
+      <DependentUpon>Userfoglalas.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="foglalasok.resx">
       <DependentUpon>foglalasok.cs</DependentUpon>
     </EmbeddedResource>
@@ -80,9 +86,13 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <EmbeddedResource Include="Regisztracio.resx">
       <DependentUpon>Regisztracio.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Userfoglalas.resx">
+      <DependentUpon>Userfoglalas.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -96,6 +106,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\hotel.jpeg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

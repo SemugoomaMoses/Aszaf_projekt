@@ -38,7 +38,9 @@
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.panel1 = new System.Windows.Forms.Panel();
             this.button1 = new System.Windows.Forms.Button();
-            this.label2 = new System.Windows.Forms.Label();
+            this.listBox1 = new System.Windows.Forms.ListBox();
+            this.betűszínToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.colorDialog1 = new System.Windows.Forms.ColorDialog();
             this.menuStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -62,6 +64,7 @@
             this.foglalásokToolStripMenuItem,
             this.foglalásToolStripMenuItem,
             this.aktuálisFoglalásokToolStripMenuItem,
+            this.betűszínToolStripMenuItem,
             this.bezárásToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
@@ -103,8 +106,8 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.listBox1);
             this.panel1.Controls.Add(this.button1);
-            this.panel1.Controls.Add(this.label2);
             this.panel1.Location = new System.Drawing.Point(150, 96);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(487, 329);
@@ -124,17 +127,25 @@
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // label2
+            // listBox1
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label2.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.label2.Location = new System.Drawing.Point(41, 29);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(60, 24);
-            this.label2.TabIndex = 0;
-            this.label2.Text = "label2";
-            this.label2.Click += new System.EventHandler(this.label2_Click);
+            this.listBox1.BackColor = System.Drawing.SystemColors.ActiveBorder;
+            this.listBox1.Font = new System.Drawing.Font("Consolas", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.listBox1.ForeColor = System.Drawing.SystemColors.Menu;
+            this.listBox1.FormattingEnabled = true;
+            this.listBox1.ItemHeight = 22;
+            this.listBox1.Location = new System.Drawing.Point(39, 28);
+            this.listBox1.Name = "listBox1";
+            this.listBox1.Size = new System.Drawing.Size(414, 224);
+            this.listBox1.TabIndex = 3;
+            // 
+            // betűszínToolStripMenuItem
+            // 
+            this.betűszínToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.betűszínToolStripMenuItem.Name = "betűszínToolStripMenuItem";
+            this.betűszínToolStripMenuItem.Size = new System.Drawing.Size(63, 20);
+            this.betűszínToolStripMenuItem.Text = "Betűszín";
+            this.betűszínToolStripMenuItem.Click += new System.EventHandler(this.betűszínToolStripMenuItem_Click);
             // 
             // Foglalasok
             // 
@@ -154,7 +165,6 @@
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -169,8 +179,10 @@
         private System.Windows.Forms.ToolStripMenuItem foglalásToolStripMenuItem;
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.ToolStripMenuItem bezárásToolStripMenuItem;
+        private System.Windows.Forms.ListBox listBox1;
+        private System.Windows.Forms.ToolStripMenuItem betűszínToolStripMenuItem;
+        private System.Windows.Forms.ColorDialog colorDialog1;
     }
 }
