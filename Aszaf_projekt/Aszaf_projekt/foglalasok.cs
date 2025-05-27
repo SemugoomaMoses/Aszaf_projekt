@@ -14,13 +14,14 @@ namespace Aszaf_projekt
     public partial class Foglalasok : Form
 
     {
-        private string felhasznaloNev; 
-      
-        public Foglalasok(string nev)
+       
+
+        public Foglalasok()
         {
             InitializeComponent();
+            string bejelentkezettNev = Regisztracio.RegisztraltTeljesNev;
             string filePath = Path.Combine(Application.StartupPath, "foglalas.txt");
-            felhasznaloNev = nev;
+          
 
 
         }
@@ -42,82 +43,9 @@ namespace Aszaf_projekt
             this.BackColor = Color.FromArgb(100, Color.Gray); 
         }
 
-        private void label2_Click(object sender, EventArgs e)
-        {
-            
-        }
+   
 
-        private void Foglalasok_Load(object sender, EventArgs e)
-        {
-            try
-            {
-                string filePath = "foglalas.txt";
-
-                
-                string[] sorok = File.ReadAllLines(filePath);
-
-                
-                listBox1.Items.Clear();
-
-                
-                foreach (string sor in sorok)
-                {
-                    listBox1.Items.Add(sor);
-                }
-            }
-            catch (Exception ex)
-            {
-                
-                listBox1.Items.Clear();
-                listBox1.Items.Add("Hiba történt: " + ex.Message);
-            }
-            try
-            {
-                string[] sorok = File.ReadAllLines("foglalas.txt");
-                bool talalat = false;
-                string egyFoglalas = "";
-
-                foreach (string sor in sorok)
-                {
-                    if (sor.StartsWith("Név:"))
-                    {
-                        if (sor.Contains(felhasznaloNev))
-                        {
-                            talalat = true;
-                            egyFoglalas = sor + "\n";
-                        }
-                        else
-                        {
-                            talalat = false;
-                        }
-                    }
-                    else if (talalat)
-                    {
-                        if (sor.StartsWith("---"))
-                        {
-                            listBox1.Items.Add(egyFoglalas.Trim());
-                            egyFoglalas = "";
-                        }
-                        else
-                        {
-                            egyFoglalas += sor + "\n";
-                        }
-                    }
-                }
-
-                if (listBox1.Items.Count == 0)
-                {
-                    listBox1.Items.Add("Nincs foglalás ehhez a névhez.");
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Hiba történt a fájl olvasásakor: " + ex.Message);
-            }
-        
-        }
-
-
+      
         private void foglalásToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Form1 form1 = new Form1();
@@ -190,6 +118,89 @@ namespace Aszaf_projekt
 
            
             parent.ForeColor = color;
+        }
+
+        private void Foglalasok_Load(object sender, EventArgs e)
+        {
+            string filePath = "foglalas.txt";
+
+            if (!File.Exists(filePath))
+            {
+                listBox1.Items.Clear();
+                listBox1.Items.Add("Nincs elérhető foglalás.");
+                return;
+            }
+
+            string[] lines = File.ReadAllLines(filePath);
+            listBox1.Items.Clear();
+
+            string keresettNev = Regisztracio.RegisztraltTeljesNev;
+            if (string.IsNullOrEmpty(keresettNev))
+            {
+                listBox1.Items.Add("Nem vagy bejelentkezve.");
+                return;
+            }
+
+            
+
+            List<string> egyFoglalas = new List<string>();
+            bool talaltFoglalas = false;
+
+            foreach (string sor in lines)
+            {
+                if (string.IsNullOrWhiteSpace(sor))
+                {
+                    
+                    if (egyFoglalas.Count > 0)
+                    {
+                        
+                        string nevSor = egyFoglalas.FirstOrDefault(s => s.StartsWith("Név:"));
+                        if (nevSor != null)
+                        {
+                            string nev = nevSor.Substring(4).Trim();
+                            if (nev == keresettNev)
+                            {
+                                talaltFoglalas = true;
+                                
+                                foreach (var sorAdat in egyFoglalas)
+                                {
+                                    listBox1.Items.Add(sorAdat);
+                                }
+                                listBox1.Items.Add("");
+                            }
+                        }
+                    }
+                    egyFoglalas.Clear();
+                }
+                else
+                {
+                    egyFoglalas.Add(sor);
+                }
+            }
+
+            
+            if (egyFoglalas.Count > 0)
+            {
+                string nevSor = egyFoglalas.FirstOrDefault(s => s.StartsWith("Név:"));
+                if (nevSor != null)
+                {
+                    string nev = nevSor.Substring(4).Trim();
+                    if (nev == keresettNev)
+                    {
+                        talaltFoglalas = true;
+                        foreach (var sorAdat in egyFoglalas)
+                        {
+                            listBox1.Items.Add(sorAdat);
+                        }
+                        listBox1.Items.Add("");
+                    }
+                }
+            }
+
+            if (!talaltFoglalas)
+            {
+                listBox1.Items.Add("Nincsenek foglalások ehhez a felhasználóhoz.");
+            }
         }
     }
 }

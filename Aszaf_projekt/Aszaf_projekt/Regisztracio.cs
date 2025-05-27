@@ -57,15 +57,15 @@ namespace Aszaf_projekt
             {
                 MessageBox.Show("Sikeres bejelentkezés!", "Belépés");
                 this.Close();
-                // Ide jöhet más form megnyitása, ha kell
+                
             }
             else
             {
                 MessageBox.Show("Hibás felhasználónév vagy jelszó!", "Hiba");
             }
-
-
+           
             
+
 
         }
 
@@ -82,6 +82,7 @@ namespace Aszaf_projekt
                 using (StreamWriter writer = new StreamWriter(filePath))
                 {
                     writer.WriteLine("Felhasználónév: " + felnev);
+                    writer.WriteLine("Felhasználó: " + nev1 + nev2);
                     writer.WriteLine("Jelszó:" + jelszo);
                     
                     if (string.IsNullOrWhiteSpace(textBox3.Text))
@@ -143,7 +144,7 @@ namespace Aszaf_projekt
 
         public TabControl GetTabControl()
         {
-            return reg;  // Visszaadja a reg TabControl-t
+            return reg;  
         }
 
         private void tabPage1_Click(object sender, EventArgs e)

@@ -185,18 +185,6 @@ namespace Aszaf_projekt
                         MessageBox.Show("Kérlek, válassz ki fizetési módot!", "Hiba", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                         return;
                     }
-                    string beirtNev = textBox1.Text.Trim();
-
-                    if (beirtNev == Regisztracio.RegisztraltTeljesNev)
-                    {
-                        Foglalasok foglalasokForm = new Foglalasok(beirtNev);
-                        foglalasokForm.Show();
-                    }
-                    else
-                    {
-                        MessageBox.Show("A megadott név nem egyezik a regisztrált névvel!");
-                    }
-
                 }
 
                 MessageBox.Show("A foglalás elkészült!");
